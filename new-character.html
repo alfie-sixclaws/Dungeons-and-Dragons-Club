@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New Character - D&amp;D Club</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="breadcrumbs-inner">
+      <a href="index.html">Homescreen</a>
+      <span class="sep">&gt;</span>
+      <a href="characters.html">Character Creator</a>
+      <span class="sep">&gt;</span>
+      <span class="current">New Character</span>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <h1>New Character</h1>
+  </header>
+
+  <main>
+    <p class="intro">Select the character sheet you want to use, then click Create character.</p>
+
+    <form id="new-character-form">
+      <!-- JavaScript builds one card per sheet type from registry.js -->
+      <div id="sheet-choices" class="sheet-choices"></div>
+
+      <!-- Only shown for sheets that support it (non-education), as in the sketch -->
+      <label id="spell-option" class="spell-option" hidden>
+        <input type="checkbox" id="spell-sheet"> Include a spell sheet?
+      </label>
+
+      <button type="submit" class="primary-button">Create character</button>
+    </form>
+  </main>
+
+  <script src="js/sheets/registry.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/new-character.js"></script>
+</body>
+</html>

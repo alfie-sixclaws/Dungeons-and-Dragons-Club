@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Character Sheet - D&amp;D Club</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sheet.css">
+</head>
+<body>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="breadcrumbs-inner">
+      <a href="index.html">Homescreen</a>
+      <span class="sep">&gt;</span>
+      <a href="characters.html">Character Creator</a>
+      <span class="sep">&gt;</span>
+      <span class="current">Character Sheet</span>
+    </div>
+  </nav>
+
+  <!-- Toolbar: stays at the top of the screen while you scroll the sheet.
+       Hidden until a character has loaded. -->
+  <div id="sheet-toolbar" class="sheet-toolbar" hidden>
+    <span id="save-status" class="save-status" aria-live="polite">All changes save automatically</span>
+    <button type="button" id="export-btn" class="toolbar-button">Export PDF</button>
+  </div>
+
+  <!-- The engine fills this in with the right sheet for the character -->
+  <main id="sheet-root" class="sheet-page"></main>
+
+  <script src="js/sheets/registry.js"></script>
+  <script src="js/vendor/pdf-lib.min.js"></script>
+  <script src="js/storage.js"></script>
+  <!-- Each sheet type adds itself to SHEETS. Add new sheet files here. -->
+  <script src="js/sheets/common.js"></script>
+  <script src="js/sheets/nonedu.js"></script>
+  <script src="js/sheets/edu.js"></script>
+  <script src="js/sheets/edu-pdf-map.js"></script>
+  <script src="js/sheets/edu-pdf.js"></script>
+  <script src="js/sheets/nonedu-pdf-spells.js"></script>
+  <script src="js/sheets/nonedu-pdf.js"></script>
+  <script src="js/sheet.js"></script>
+</body>
+</html>

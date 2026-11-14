@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Character Creator - D&amp;D Club</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Breadcrumbs: copy this block onto every page, changing only the last item.
+       aria-label helps screen readers know what this navigation is for. -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <!-- two layers: the outer one is the gold outline, the inner one is the fill -->
+    <div class="breadcrumbs-inner">
+      <a href="index.html">Homescreen</a>
+      <span class="sep">&gt;</span>
+      <span class="current">Character Creator</span>
+    </div>
+  </nav>
+
+  <header class="site-header">
+    <h1>Character Creator</h1>
+  </header>
+
+  <main>
+    <!-- Goes to a page we haven't built yet (next step) -->
+    <a class="tile create-new" href="new-character.html">Create new <span class="plus">+</span></a>
+
+    <h2 class="section-title">Your characters</h2>
+
+    <!-- JavaScript fills this list in from localStorage -->
+    <ul id="character-list" class="character-list"></ul>
+    <p id="empty-message" class="empty-message">No characters yet. Click "Create new" to make one!</p>
+  </main>
+
+  <!-- Loaded at the END of the body so the elements above already exist
+       by the time the script looks for them. -->
+  <script src="js/sheets/registry.js"></script>
+  <script src="js/vendor/pdf-lib.min.js"></script>   <!-- the library that fills in PDFs -->
+  <script src="js/storage.js"></script>
+  <!-- Each sheet type adds itself to SHEETS; export lives with its sheet. -->
+  <script src="js/sheets/common.js"></script>
+  <script src="js/sheets/nonedu.js"></script>
+  <script src="js/sheets/edu.js"></script>
+  <script src="js/sheets/edu-pdf-map.js"></script>
+  <script src="js/sheets/edu-pdf.js"></script>
+  <script src="js/sheets/nonedu-pdf-spells.js"></script>
+  <script src="js/sheets/nonedu-pdf.js"></script>
+  <script src="js/characters.js"></script>
+</body>
+</html>

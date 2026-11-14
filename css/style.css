@@ -1,0 +1,191 @@
+/* CSS variables: change a colour here and it changes everywhere */
+:root {
+  --bg: #000000;
+  --panel: #ee1e0b;
+  --accent: #c9a227;   /* gold */
+  --text: #5de837;
+  --muted: #8d869c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, serif;
+}
+
+.site-header { text-align: center; padding: 2rem 1rem 1rem; }
+.site-header h1 { margin: 0; color: var(--accent); }
+
+main { max-width: 800px; margin: 0 auto; padding: 1rem; }
+
+/* CSS Grid: 2 columns on a phone, same on desktop */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+}
+.tile:hover { background: #3a3158; }
+
+.tile small { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; }
+
+/* Unbuilt pages look faded and don't react to the mouse */
+.disabled { opacity: 0.5; border-color: var(--muted); pointer-events: none; }
+
+/* The Homebrew button */
+.homebrew-button {
+  /* fixed + right/bottom pins it to the bottom-right corner of the screen */
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+}
+.homebrew-button small { font-size: 0.75rem; color: var(--muted); }
+
+/* position: fixed pins the tab to the screen, so it floats on the right.
+   top: 50% + translateY(-50%) centres it vertically.
+   border-radius on the LEFT corners only makes it curve away from the edge. */
+.side-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem 0.75rem 1.25rem 1rem;
+  background: var(--panel);
+  border: 2px solid var(--accent);
+  border-right: none;
+  border-radius: 40px 0 0 40px;
+}
+
+.side-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+}
+.side-link .icon { font-size: 2rem; }
+.side-link .label { font-size: 0.7rem; }
+
+/* On phones, keep the tab but make it smaller and hide the text labels */
+@media (max-width: 600px) {
+  .side-link .label { display: none; }
+  .side-link .icon { font-size: 1.6rem; }
+  /* leave room so the tab doesn't cover tiles (only on pages that have the tab) */
+  body:has(.side-tab) main { padding-right: 4.5rem; }
+}
+
+/* ---------- Breadcrumbs (used on every page except the homescreen) ---------- */
+/* clip-path cuts an element into any shape. But clip-path also cuts off any
+   normal border, so we fake the outline with two stacked hexagons:
+   a gold one underneath, and a slightly smaller dark one on top.
+   The 3px of gold left showing around the edge looks like a border. */
+.breadcrumbs {
+  --point: 22px;                 /* how far in the pointed ends reach */
+  width: fit-content;            /* shrink to the text size... */
+  margin: 1rem auto;             /* ...and auto side margins centre it */
+  padding: 3px;                  /* thickness of the gold outline */
+  background: var(--accent);
+  clip-path: polygon(var(--point) 0, calc(100% - var(--point)) 0, 100% 50%,
+                     calc(100% - var(--point)) 100%, var(--point) 100%, 0 50%);
+  max-width: 100%;
+}
+.breadcrumbs-inner {
+  padding: 0.6rem calc(var(--point) + 1rem);   /* room so text avoids the points */
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  background: var(--bg);
+  clip-path: polygon(var(--point) 0, calc(100% - var(--point)) 0, 100% 50%,
+                     calc(100% - var(--point)) 100%, var(--point) 100%, 0 50%);
+}
+.breadcrumbs a { color: var(--accent); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
+.breadcrumbs .sep { margin: 0 0.4rem; }
+.breadcrumbs .current { color: var(--text); }
+
+/* ---------- Character list page ---------- */
+.create-new { min-height: 100px; width: 100%; max-width: 300px; margin: 0 auto 2rem; }
+.create-new .plus { font-size: 2rem; color: var(--accent); }
+
+.section-title { color: var(--accent); }
+.empty-message { color: var(--muted); }
+
+.character-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.character-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+}
+.character-card > div { flex: 1; }
+.character-card { border-left: 6px solid var(--type-color, var(--muted)); }
+.character-card small { color: var(--type-color, var(--muted)); }
+.character-card a { color: var(--accent); }
+.character-card button {
+  background: none; color: var(--text); border: 1px solid var(--muted);
+  border-radius: 6px; padding: 0.3rem 0.7rem; cursor: pointer;
+}
+.character-card button:hover { border-color: #e63946; color: #e63946; }
+
+/* ---------- New character page ---------- */
+.intro { text-align: center; }
+.sheet-choices { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0; }
+.sheet-card {
+  --type-color: var(--muted);              /* each card overrides this with its own colour */
+  display: block; width: 240px; padding: 1.25rem; text-align: center; cursor: pointer;
+  background: var(--panel); border: 2px solid color-mix(in srgb, var(--type-color) 45%, transparent);
+  border-top: 8px solid var(--type-color); border-radius: 12px;
+  accent-color: var(--type-color);
+}
+.sheet-card strong { color: var(--type-color); font-size: 1.1rem; }
+.sheet-card:has(input:checked) {
+  border-color: var(--type-color); border-top-width: 8px;
+  background: color-mix(in srgb, var(--type-color) 22%, var(--panel));
+  box-shadow: 0 0 0 2px var(--type-color);
+}
+.sheet-card.disabled { opacity: 0.5; cursor: not-allowed; }
+.sheet-card small { color: var(--muted); }
+.sheet-card input { display: block; margin: 0 auto 0.5rem; }
+.spell-option { display: block; text-align: center; margin-bottom: 1.5rem; }
+
+.primary-button {
+  display: block; margin: 0 auto; padding: 0.8rem 2rem; font: inherit; font-size: 1.1rem;
+  color: var(--bg); background: var(--accent); border: none; border-radius: 8px; cursor: pointer;
+}
+.primary-button:hover { filter: brightness(1.1); }
+
+.character-card button:disabled { opacity: 0.4; cursor: not-allowed; }
+.character-card button:disabled:hover { border-color: var(--muted); color: var(--text); }
