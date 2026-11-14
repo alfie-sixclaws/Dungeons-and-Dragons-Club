@@ -1,9 +1,10 @@
 /* CSS variables: change a colour here and it changes everywhere */
 :root {
-  --bg: #000000;
-  --panel: #ee1e0b;
-  --accent: #c9a227;   /* gold */
-  --text: #5de837;
+  --bg: #ffffff;
+  --accent: #c9a227;   /* gold */ 
+  --panel: gold(103, 96, 96);  /* gold */
+  --accent: #c9a227;   /* gold */ 
+  --text: #703131;  /* crismon */
   --muted: #8d869c;
 }
 
