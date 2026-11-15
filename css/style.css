@@ -1,11 +1,11 @@
 /* CSS variables: change a colour here and it changes everywhere */
 :root {
-  --bg: #ffffff;
-  --accent: #c9a227;   /* gold */ 
-  --panel: gold(103, 96, 96);  /* gold */
-  --accent: #c9a227;   /* gold */ 
-  --text: #703131;  /* crismon */
-  --muted: #8d869c;
+  --bg: #51A5C5;
+  --accent: #507F62;   /* gold */ 
+  --panel: #B59E54(103, 96, 96);  /* gold */
+  --accent: 7B469B;   /* gold */ 
+  --text: #555752 ;  /* crismon */
+  --muted: #7F513E;
 }
 
 * { box-sizing: border-box; }
